@@ -21,13 +21,13 @@ export async function POST(request: Request) {
     const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_CHAT_ID;
 
     const text = [
-      "📩 *Portfolio saytidan yangi xabar!*",
+      "📩 <b>Portfolio saytidan yangi xabar!</b>",
       "",
-      `👤 *Ism:* ${escapeMarkdown(name)}`,
-      `📱 *Aloqa:* ${escapeMarkdown(contact)}`,
+      `👤 <b>Ism:</b> ${escapeHtml(name)}`,
+      `📱 <b>Aloqa:</b> ${escapeHtml(contact)}`,
       "",
-      "💬 *Xabar:*",
-      escapeMarkdown(message),
+      "💬 <b>Xabar:</b>",
+      escapeHtml(message),
     ].join("\n");
 
     const telegramResponse = await fetch(
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           chat_id: chatId,
           text,
-          parse_mode: "Markdown",
+          parse_mode: "HTML",
         }),
       }
     );
@@ -49,7 +49,10 @@ export async function POST(request: Request) {
       const errData = await telegramResponse.text();
       console.error("Telegram API error:", errData);
       return NextResponse.json(
-        { error: "Telegram botga yuborishda xatolik yuz berdi." },
+        {
+          error:
+            "Xabar yuborish uchun avval @contactmejq_bot ga kirib /start tugmasini bosing.",
+        },
         { status: 502 }
       );
     }
@@ -64,6 +67,9 @@ export async function POST(request: Request) {
   }
 }
 
-function escapeMarkdown(input: string): string {
-  return input.replace(/([_*`\[])/g, "\\$1");
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
