@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <defs>
+    <radialGradient id="arenaCore" cx="38%" cy="52%" r="48%">
+      <stop offset="0%" stop-color="#FF304F" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#FF304F" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="arenaGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#181820" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="750" fill="#08080C"/>
+  <rect width="1200" height="750" fill="url(#arenaGrid)"/>
+  <rect width="1200" height="750" fill="url(#arenaCore)"/>
+
+  <!-- Top Telemetry HUD -->
+  <rect x="32" y="24" width="1136" height="54" rx="10" fill="#111116" stroke="#292929"/>
+  <circle cx="58" cy="51" r="5" fill="#FF304F"/>
+  <text x="74" y="55" fill="#F5F3EF" font-family="monospace" font-size="12" font-weight="700" letter-spacing="1.5">PHASER 3 ENGINE // HTML5 CANVAS &amp; WEBGL</text>
+  <text x="480" y="55" fill="#D4AF72" font-family="monospace" font-size="12">MODE: SURVIVAL WAVE 07/10</text>
+  <text x="760" y="55" fill="#929292" font-family="monospace" font-size="12">SERVER TICK: 20 TPS (WS)</text>
+  <text x="1140" y="55" text-anchor="end" fill="#FF304F" font-family="monospace" font-size="12" font-weight="700">COMBO: INFERNO +25% CRIT</text>
+
+  <!-- Left Arena Viewport (Phaser 3 Scene Simulation) -->
+  <g transform="translate(32, 98)">
+    <rect width="680" height="580" rx="16" fill="#0B0B10" stroke="#292929" stroke-width="1.5"/>
+
+    <!-- Hazard Zone 1: Acid Zone -->
+    <circle cx="170" cy="180" r="78" fill="#10B981" fill-opacity="0.07" stroke="#10B981" stroke-opacity="0.35" stroke-dasharray="6 6"/>
+    <text x="170" y="184" text-anchor="middle" fill="#10B981" font-family="monospace" font-size="10" letter-spacing="1.5">ACID HAZARD ZONE</text>
+
+    <!-- Hazard Zone 2: Gravity Well -->
+    <circle cx="510" cy="410" r="88" fill="#A855F7" fill-opacity="0.07" stroke="#A855F7" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+    <circle cx="510" cy="410" r="46" stroke="#A855F7" stroke-opacity="0.25" fill="none"/>
+    <text x="510" y="414" text-anchor="middle" fill="#C084FC" font-family="monospace" font-size="10" letter-spacing="1.5">GRAVITY WELL</text>
+
+    <!-- Player Digital Cell & Radial Special Pulse (E) -->
+    <circle cx="330" cy="290" r="110" stroke="#FF304F" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="8 6" fill="none"/>
+    <circle cx="330" cy="290" r="64" fill="#FF304F" fill-opacity="0.08" stroke="#FF304F" stroke-opacity="0.5"/>
+    <polygon points="330,264 352,277 352,303 330,316 308,303 308,277" fill="#1F0D14" stroke="#FF304F" stroke-width="2.5"/>
+    <circle cx="330" cy="290" r="6" fill="#F5F3EF"/>
+    <text x="330" y="340" text-anchor="middle" fill="#F5F3EF" font-family="monospace" font-size="10" font-weight="700">HOST CELL [LV.14]</text>
+
+    <!-- Projectile Vector Lines -->
+    <line x1="352" y1="277" x2="465" y2="210" stroke="#D4AF72" stroke-width="2" stroke-dasharray="10 4"/>
+    <line x1="352" y1="290" x2="485" y2="265" stroke="#D4AF72" stroke-width="1.5" stroke-dasharray="8 4"/>
+
+    <!-- Elite & Miniboss Entities -->
+    <g transform="translate(490, 195)">
+      <polygon points="0,-24 22,-12 22,12 0,24 -22,12 -22,-12" fill="#261019" stroke="#FF304F" stroke-width="2"/>
+      <text x="0" y="40" text-anchor="middle" fill="#FF304F" font-family="monospace" font-size="10" font-weight="700">ANCIENT CELL BOSS</text>
+    </g>
+
+    <!-- Controls Bar inside Arena -->
+    <rect x="20" y="514" width="640" height="46" rx="8" fill="#121218" stroke="#292929"/>
+    <text x="40" y="541" fill="#F5F3EF" font-family="monospace" font-size="11">[WASD] Move</text>
+    <text x="175" y="541" fill="#D4AF72" font-family="monospace" font-size="11">[SPACE] Dash (I-Frames)</text>
+    <text x="380" y="541" fill="#FF304F" font-family="monospace" font-size="11">[E] Special Radial Pulse</text>
+    <text x="565" y="541" fill="#929292" font-family="monospace" font-size="11">[MOBILE] Auto-Aim</text>
+  </g>
+
+  <!-- Right Panel: 3-Card Mutation Drafting System -->
+  <g transform="translate(736, 98)">
+    <rect width="432" height="580" rx="16" fill="#111116" stroke="#292929" stroke-width="1.5"/>
+    <text x="28" y="42" fill="#D4AF72" font-family="monospace" font-size="11" font-weight="700" letter-spacing="2">MUTATION LOADOUT OVERLAY</text>
+    <text x="28" y="68" fill="#F5F3EF" font-family="sans-serif" font-size="22" font-weight="700">Draft 1 of 3 Mutations</text>
+    <text x="28" y="92" fill="#929292" font-family="monospace" font-size="11">Reroll, Banish &amp; Synergy Combo System</text>
+
+    <!-- Card 1: Common / Rare -->
+    <rect x="28" y="116" width="376" height="112" rx="12" fill="#17171E" stroke="#38BDF8" stroke-opacity="0.5"/>
+    <text x="48" y="144" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="700" letter-spacing="1.5">RARE TIER • 30% PROBABILITY</text>
+    <text x="48" y="172" fill="#F5F3EF" font-family="monospace" font-size="17" font-weight="700">Multi Shot + Acid Trail</text>
+    <text x="48" y="198" fill="#929292" font-family="monospace" font-size="11">Fires split bio-projectiles &amp; leaves corrosive path</text>
+
+    <!-- Card 2: Epic -->
+    <rect x="28" y="246" width="376" height="112" rx="12" fill="#17171E" stroke="#A855F7" stroke-opacity="0.55"/>
+    <text x="48" y="274" fill="#C084FC" font-family="monospace" font-size="10" font-weight="700" letter-spacing="1.5">EPIC TIER • 15% PROBABILITY</text>
+    <text x="48" y="302" fill="#F5F3EF" font-family="monospace" font-size="17" font-weight="700">Plasma Storm &amp; Time Warp</text>
+    <text x="48" y="328" fill="#929292" font-family="monospace" font-size="11">Orbital plasma discharge + temporal enemy slow</text>
+
+    <!-- Card 3: Legendary -->
+    <rect x="28" y="376" width="376" height="122" rx="12" fill="#1C1712" stroke="#D4AF72" stroke-width="1.5"/>
+    <text x="48" y="404" fill="#D4AF72" font-family="monospace" font-size="10" font-weight="700" letter-spacing="1.5">LEGENDARY TIER • 5% PROBABILITY</text>
+    <text x="48" y="432" fill="#F5F3EF" font-family="monospace" font-size="17" font-weight="700">Omega Beam / Cell Division</text>
+    <text x="48" y="458" fill="#929292" font-family="monospace" font-size="11">Spawns autonomous combat clone + high-energy beam</text>
+    <text x="48" y="480" fill="#D4AF72" font-family="monospace" font-size="10">★ UNLOCKS STORM CORE &amp; INFERNO PROTOCOL SYNERGY</text>
+
+    <!-- Reroll Button -->
+    <rect x="28" y="518" width="180" height="40" rx="8" fill="#171717" stroke="#292929"/>
+    <text x="118" y="542" text-anchor="middle" fill="#F5F3EF" font-family="monospace" font-size="11">↻ REROLL CARDS</text>
+    <rect x="224" y="518" width="180" height="40" rx="8" fill="#FF304F"/>
+    <text x="314" y="542" text-anchor="middle" fill="#080808" font-family="monospace" font-size="11" font-weight="700">LOCK MUTATION</text>
+  </g>
+
+  <text x="60" y="720" fill="#929292" font-family="monospace" font-size="11">ENGINE SCENES: MainScene.ts • SurvivalScene.ts • PracticeScene.ts • MultiplayerScene.ts</text>
+  <text x="1140" y="720" text-anchor="end" fill="#D4AF72" font-family="monospace" font-size="11">WEB AUDIO API PROCEDURAL SFX</text>
+</svg>
