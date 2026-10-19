@@ -78,14 +78,6 @@ export function Hero() {
               {portfolioData.personal.experienceSummaryBadge[locale]}
             </span>
           </div>
-
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
-            <span>{portfolioData.personal.location[locale]}</span>
-            <span className="text-gold">•</span>
-            <span className="hidden md:inline">
-              {portfolioData.personal.coordinates}
-            </span>
-          </div>
         </motion.div>
 
         {/* Main Hero Grid: Left Typographic Composition + Right CELLIX Visual Showcase */}

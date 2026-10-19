@@ -144,8 +144,8 @@ export const portfolioData = {
       uz: "Men React.js va TypeScript yordamida puxta o‘ylangan interfeyslar, tezkorlik va toza kod asosida zamonaviy web-ilovalarni yarataman.",
     },
     experienceSummaryBadge: {
-      en: "8 Months Practical Frontend Experience • Tashkent, Uzbekistan",
-      uz: "8 Oylik Amaliy Frontend Tajriba • Toshkent, O‘zbekiston",
+      en: "8 Months Practical Frontend Experience",
+      uz: "8 Oylik Amaliy Frontend Tajriba",
     },
     location: {
       en: "Tashkent, Uzbekistan",
