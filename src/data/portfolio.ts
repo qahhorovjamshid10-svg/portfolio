@@ -1030,8 +1030,8 @@ export const portfolioData = {
       index: "01",
       institution: "Vatan University",
       program: {
-        en: "Software Engineering (Dasturiy Injinering)",
-        uz: "Dasturiy Injinering",
+        en: "Software Engineering — 2nd Year (Dasturiy Injinering 2-kurs)",
+        uz: "Dasturiy Injinering 2-kurs",
       },
       period: {
         en: "2025 – Present",
@@ -1039,12 +1039,12 @@ export const portfolioData = {
       },
       gpa: "3.8 / 5.0",
       status: {
-        en: "Undergraduate • Active",
-        uz: "Talaba • Faol",
+        en: "2nd Year Undergraduate • Active",
+        uz: "2-kurs Talabasi • Faol",
       },
       description: {
-        en: "University degree program in Software Engineering with a strong academic standing (GPA: 3.8 / 5.0).",
-        uz: "Dasturiy injinering yo‘nalishi bo‘yicha oliy ta’lim (GPA ko‘rsatkichi: 3.8 / 5.0).",
+        en: "2nd-year university student in Software Engineering with a strong academic standing (GPA: 3.8 / 5.0).",
+        uz: "Dasturiy injinering yo‘nalishi 2-kurs talabasi (GPA ko‘rsatkichi: 3.8 / 5.0).",
       },
     },
     {

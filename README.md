@@ -19,7 +19,7 @@ Portfolio ikki tilda (**O‘zbek** va **Ingliz** tillarida) ishlaydi hamda foyda
   - **DevOps va Ishchi Asboblar**: `Git`, `GitHub`, `GitLab`, `Vite`
 - **Tajriba (Experience)**: 8 oylik amaliy frontend tajribasi hamda jamoaviy loyihalar va yangi imkoniyatlar uchun ochiqlik ma’lumoti.
 - **Ta’lim (Education)**:
-  - **Vatan University** — Dasturiy Injinering (*2025 – Hozirgi vaqt*, GPA: `3.8 / 5.0`)
+  - **Vatan University** — Dasturiy Injinering 2-kurs (*2025 – Hozirgi vaqt*, GPA: `3.8 / 5.0`)
   - **Najot Ta'lim** — React Frontend (*03.2025 – 10.2025*)
   - **IT - PARK (CENTER)** — Frontend (*2022*)
 - **Tillar (Languages)**: O‘zbek tili (Ona tili), Ingliz tili (B1), Rus tili (A2).
