@@ -1,107 +1,45 @@
-# Jamshid Qahhorov — Personal Portfolio
+# Jamshid Qahhorov — Shaxsiy Portfolio Sayti
 
-A production-ready personal portfolio website for **Jamshid Qahhorov** (**Front-End Developer**), art-directed in **Dark Premium Minimalism** with restrained **Champagne Gold (`#D4AF72`)** accents and **CELLIX-specific Neon Red (`#FF304F`)** project highlights.
-
----
-
-## 1. Visual & Architectural Direction
-
-### Color System
-| Token | Hex | Role |
-|---|---|---|
-| `obsidian` | `#080808` | Primary background |
-| `surface` | `#111111` | Secondary architectural surface |
-| `card` | `#171717` | Project & content card surface |
-| `ivory` | `#F5F3EF` | Primary editorial text |
-| `muted` | `#929292` | Secondary / supporting text |
-| `gold` | `#D4AF72` | Restrained Champagne Gold accent |
-| `hairline` | `#292929` | Subtle 1px structural borders |
-| `cellix.red` | `#FF304F` | Reserved strictly for CELLIX visuals & telemetry |
-
-### Technology Stack
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS 3.4
-- **Component Animations**: Motion (`motion/react`) with `prefers-reduced-motion` support
-- **Scroll Parallax**: GSAP (`gsap` + `ScrollTrigger`) isolated to dedicated project image containers
-- **Icons**: Lucide React (`lucide-react`)
+**Front-End Developer** — **Jamshid Qahhorov**ning shaxsiy portfolio veb-sayti. Ushbu sayt zamonaviy web-ilovalar yaratish tajribasi, texnik ko‘nikmalar, ta’lim va **CELLIX** interaktiv loyihasini taqdim etish uchun **Dark Premium Minimalism** uslubida ishlab chiqilgan.
 
 ---
 
-## 2. Project Structure
+## Sayt Haqida
 
-```text
-portfolio/
-├── public/
-│   ├── Jamshid_Qahhorov_CV.pdf        # Original supplied CV
-│   └── images/projects/               # CELLIX SVG interface & architecture visuals
-│       ├── cellix-hub.svg
-│       ├── cellix-arena.svg
-│       ├── cellix-armory.svg
-│       └── cellix-telemetry.svg
-├── src/
-│   ├── app/
-│   │   ├── globals.css                # Design tokens & reduced-motion rules
-│   │   ├── icon.svg                   # Monogram favicon (JQ.)
-│   │   ├── layout.tsx                 # Root layout, fonts, SEO & Open Graph metadata
-│   │   ├── not-found.tsx              # Custom 404 page
-│   │   ├── page.tsx                   # Main portfolio page (Hero -> Contact)
-│   │   └── projects/cellix/page.tsx   # Dedicated CELLIX engineering case study route
-│   ├── components/
-│   │   ├── PortfolioProvider.tsx      # Bilingual (EN/UZ) & reduced-motion provider
-│   │   ├── Navbar.tsx                 # Accessible sticky navigation + mobile drawer
-│   │   ├── Hero.tsx                   # Monumental typography + interactive CELLIX frame
-│   │   ├── AboutSection.tsx           # Verified CV summary & architectural pillars
-│   │   ├── ProjectCard.tsx            # Reusable project card with GSAP parallax
-│   │   ├── ProjectsSection.tsx        # Selected Projects section
-│   │   ├── SkillsSection.tsx          # Categorized CV skills & technologies
-│   │   ├── ExperienceSection.tsx      # 8 months practical experience + transparent placeholder
-│   │   ├── EducationSection.tsx       # Vatan University, Najot Ta'lim, IT-Park
-│   │   ├── LanguagesSection.tsx       # Uzbek (Native), English (B1), Russian (A2)
-│   │   ├── ContactSection.tsx         # Direct verified channels & inquiry composer
-│   │   ├── CellixCaseStudyClient.tsx  # Full CELLIX engineering case study view
-│   │   ├── MagneticButton.tsx         # Desktop-only magnetic button primitive
-│   │   ├── SectionHeader.tsx          # Editorial section header primitive
-│   │   └── Footer.tsx                 # Colophon with live Tashkent clock
-│   └── data/
-│       └── portfolio.ts               # Centralized TypeScript source of truth
-```
+Portfolio ikki tilda (**O‘zbek** va **Ingliz** tillarida) ishlaydi hamda foydalanuvchilarga quyidagi ma’lumotlarni qulay va zamonaviy interfeys orqali taqdim etadi:
+
+- **Men Haqimda (About Me)**: React va TypeScript yordamida zamonaviy web-ilovalar yaratish, REST API’larni integratsiya qilish va sifatli foydalanuvchi interfeyslarini ishlab chiqish bo‘yicha 8 oylik amaliy tajriba haqida umumiy ma’lumot.
+- **Tanlangan Loyihalar (Selected Projects)**:
+  - **CELLIX — Real-Time Cyberpunk Multiplayer & Arcade Web Game Platform**: Brauzer orqali real vaqt rejimida o‘ynaladigan interaktiv cyberpunk o‘yin platformasi (`Next.js`, `React`, `TypeScript`, `Tailwind CSS`, `Framer Motion`, `Phaser 3`, `WebSockets`, `REST API` va `AI Development`).
+  - Sayt ichida CELLIX loyihasining barcha ekranlari (Command Hub, Phaser Combat Arena, Cyber Armory, Leaderboard) va alohida batafsil tahlil sahifasi (`/projects/cellix`) mavjud.
+- **Texnik Ko‘nikmalar (Skills & Technologies)**:
+  - **Frontend Dasturlash**: `React.js`, `JavaScript (ES6+)`, `TypeScript`, `Tailwind CSS`, `HTML5 & CSS3`, `SASS / SCSS`
+  - **REST API va Interaktiv Interfeyslar**: `REST Full API`, `Responsive Web Design`, `Framer Motion / UI Animations`
+  - **AI Development**: Zamonaviy AI vositalari yordamida tezkor prototiplash, murakkab web-ilovalarni yaratish va kodni optimallashtirish
+  - **DevOps va Ishchi Asboblar**: `Git`, `GitHub`, `GitLab`, `Vite`
+- **Tajriba (Experience)**: 8 oylik amaliy frontend tajribasi hamda jamoaviy loyihalar va yangi imkoniyatlar uchun ochiqlik ma’lumoti.
+- **Ta’lim (Education)**:
+  - **Vatan University** — Dasturiy Injinering (*2025 – Hozirgi vaqt*, GPA: `3.8 / 5.0`)
+  - **Najot Ta'lim** — React Frontend (*03.2025 – 10.2025*)
+  - **IT - PARK (CENTER)** — Frontend (*2022*)
+- **Tillar (Languages)**: O‘zbek tili (Ona tili), Ingliz tili (B1), Rus tili (A2).
+- **Aloqa (Contact)**: To‘g‘ridan-to‘g‘ri xabar yuborish oynasi, CV PDF yuklab olish va tasdiqlangan ijtimoiy tarmoq havolalari.
 
 ---
 
-## 3. Running & Building Locally
+## Asosiy Loyiha: CELLIX
 
-```bash
-# Install dependencies
-npm install
-
-# Start development server (http://localhost:3000)
-npm run dev
-
-# Run TypeScript type check
-npm run typecheck
-
-# Create production build
-npm run build
-
-# Start production server
-npm run start
-```
+- **Jonli Demo (Live Demo)**: [https://cellix.vercel.app/](https://cellix.vercel.app/)
+- **GitHub Repozitoriy**: [https://github.com/qahhorovjamshid10-svg/cellix](https://github.com/qahhorovjamshid10-svg/cellix)
 
 ---
 
-## 4. Editing Content
+## Bog‘lanish (Contact)
 
-All portfolio copy, contact links, projects, skills, experience, education, and languages are centralized in:
-- `src/data/portfolio.ts`
-
-Both English (`en`, default) and Uzbek (`uz`) translations are maintained in the same typed data file.
-
----
-
-## 5. Deployment (Vercel / Production)
-
-1. Push the repository to GitHub (`https://github.com/qahhorovjamshid10-svg/...`).
-2. Import the repository into [Vercel](https://vercel.com/new).
-3. Vercel automatically detects Next.js App Router (`npm run build`).
-4. Click **Deploy** — zero environment variables are required.
+- **Ism-sharif**: Jamshid Qahhorov
+- **Mutaxassislik**: Front-End Developer
+- **Manzil**: Toshkent, O‘zbekiston
+- **Email**: [qahhorovjamshid10@gmail.com](mailto:qahhorovjamshid10@gmail.com)
+- **Telefon**: `+998 88 300 47 95`
+- **Telegram**: [@iflxczz](https://t.me/iflxczz)
+- **GitHub**: [github.com/qahhorovjamshid10-svg](https://github.com/qahhorovjamshid10-svg)
