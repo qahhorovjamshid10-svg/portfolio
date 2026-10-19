@@ -25,6 +25,8 @@ export function ContactSection() {
   const [senderName, setSenderName] = useState("");
   const [senderContact, setSenderContact] = useState("");
   const [messageBody, setMessageBody] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
   const [formFeedback, setFormFeedback] = useState<string | null>(null);
 
   const handleCopy = async (text: string, field: "email" | "phone") => {
@@ -37,22 +39,58 @@ export function ContactSection() {
     }
   };
 
-  const handleMailtoSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `Portfolio Inquiry from ${senderName.trim() || "Visitor"}`
-    );
-    const body = encodeURIComponent(
-      `Hello Jamshid,\n\n${messageBody.trim()}\n\n—\nFrom: ${
-        senderName.trim() || "Visitor"
-      }\nContact: ${senderContact.trim() || "Not provided"}`
-    );
-    setFormFeedback(
-      locale === "en"
-        ? "Opening your email client with the prepared message..."
-        : "Xabar tayyorlandi, pochta dasturi ochilmoqda..."
-    );
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+    if (isSending) return;
+
+    setIsSending(true);
+    setFormStatus(null);
+    setFormFeedback(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: senderName,
+          contact: senderContact,
+          message: messageBody,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setFormStatus("error");
+        setFormFeedback(
+          data?.error ||
+            (locale === "en"
+              ? "Failed to send message. Please try again or reach out via Telegram."
+              : "Xabar yuborishda xatolik yuz berdi. Iltimos qayta urinib ko‘ring.")
+        );
+      } else {
+        setFormStatus("success");
+        setFormFeedback(
+          locale === "en"
+            ? "Your message has been sent directly to my Telegram! I will review it and get back to you soon."
+            : "Xabaringiz muvaffaqiyatli Telegram botimga yuborildi! Ko‘rib chiqib, tez orada sizga yozaman."
+        );
+        setSenderName("");
+        setSenderContact("");
+        setMessageBody("");
+      }
+    } catch {
+      setFormStatus("error");
+      setFormFeedback(
+        locale === "en"
+          ? "Network error occurred. Please try again."
+          : "Tarmoq xatoligi yuz berdi. Qayta urinib ko‘ring."
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -241,7 +279,7 @@ export function ContactSection() {
             className="lg:col-span-6"
           >
             <form
-              onSubmit={handleMailtoSubmit}
+              onSubmit={handleFormSubmit}
               className="p-6 sm:p-8 bg-card border border-hairline space-y-5"
             >
               <div className="pb-4 border-b border-hairline flex items-center justify-between">
@@ -251,7 +289,7 @@ export function ContactSection() {
                     : "To‘g‘ridan-To‘g‘ri Xabar Yuborish"}
                 </h3>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-gold">
-                  DIRECT DISPATCH
+                  TELEGRAM BOT
                 </span>
               </div>
 
@@ -281,8 +319,8 @@ export function ContactSection() {
                   className="block font-mono text-xs uppercase tracking-[0.14em] text-muted"
                 >
                   {locale === "en"
-                    ? "Your Email or Telegram"
-                    : "Email yoki Telegram manzilingiz"}
+                    ? "Your Telegram or Phone / Email"
+                    : "Telegram (@username), Telefon yoki Email"}
                 </label>
                 <input
                   id="sender-contact"
@@ -292,8 +330,8 @@ export function ContactSection() {
                   onChange={(e) => setSenderContact(e.target.value)}
                   placeholder={
                     locale === "en"
-                      ? "name@company.com or @username"
-                      : "name@company.com yoki @username"
+                      ? "@username, +998... or email"
+                      : "@username, +998... yoki email"
                   }
                   className="w-full px-4 py-3 bg-obsidian border border-hairline text-ivory text-sm font-sans placeholder:text-muted/50 focus:outline-none focus:border-gold transition-colors"
                 />
@@ -324,7 +362,11 @@ export function ContactSection() {
               {formFeedback && (
                 <p
                   role="status"
-                  className="font-mono text-xs text-gold bg-surface border border-gold/30 px-3.5 py-2.5"
+                  className={`font-mono text-xs px-3.5 py-2.5 border ${
+                    formStatus === "error"
+                      ? "text-cellix-red bg-surface border-cellix-red/40"
+                      : "text-gold bg-surface border-gold/30"
+                  }`}
                 >
                   {formFeedback}
                 </p>
@@ -333,14 +375,19 @@ export function ContactSection() {
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   type="submit"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gold text-obsidian hover:bg-gold-light font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                  disabled={isSending}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gold text-obsidian hover:bg-gold-light disabled:opacity-60 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                 >
+                  <Send className="w-3.5 h-3.5" />
                   <span>
-                    {locale === "en"
-                      ? "Send via Email Client"
-                      : "Email Orqali Yuborish"}
+                    {isSending
+                      ? locale === "en"
+                        ? "Sending..."
+                        : "Yuborilmoqda..."
+                      : locale === "en"
+                        ? "Send Message"
+                        : "Xabar Yuborish"}
                   </span>
-                  <ArrowUpRight className="w-4 h-4" />
                 </button>
 
                 <a
@@ -349,8 +396,8 @@ export function ContactSection() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-surface border border-hairline hover:border-gold text-ivory hover:text-gold font-mono text-xs uppercase tracking-[0.14em] transition-colors"
                 >
-                  <Send className="w-3.5 h-3.5" />
                   <span>Telegram</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </form>
