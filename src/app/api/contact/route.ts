@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const DEFAULT_BOT_TOKEN = "8853812206:AAFHMGZvU4qP_360kkBz51Cjx3D1UjJ8uNY";
+const DEFAULT_CHAT_ID = "1022345814";
 
 export async function POST(request: Request) {
   try {
@@ -17,51 +18,7 @@ export async function POST(request: Request) {
     }
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_BOT_TOKEN;
-    let chatId = process.env.TELEGRAM_CHAT_ID;
-
-    // If TELEGRAM_CHAT_ID is not set, try to discover it from bot getUpdates
-    if (!chatId && botToken) {
-      try {
-        const updatesRes = await fetch(
-          `https://api.telegram.org/bot${botToken}/getUpdates`,
-          { cache: "no-store" }
-        );
-        if (updatesRes.ok) {
-          const updatesData = await updatesRes.json();
-          const updates = Array.isArray(updatesData?.result)
-            ? updatesData.result
-            : [];
-          // Prefer user matching username 'iflxczz' or the first private chat
-          for (let i = updates.length - 1; i >= 0; i--) {
-            const msg = updates[i]?.message || updates[i]?.my_chat_member;
-            const chat = msg?.chat;
-            if (chat?.id) {
-              if (
-                String(chat.username || "").toLowerCase() === "iflxczz" ||
-                !chatId
-              ) {
-                chatId = String(chat.id);
-                if (String(chat.username || "").toLowerCase() === "iflxczz") {
-                  break;
-                }
-              }
-            }
-          }
-        }
-      } catch (err) {
-        console.error("Failed to fetch getUpdates:", err);
-      }
-    }
-
-    if (!botToken || !chatId) {
-      return NextResponse.json(
-        {
-          error:
-            "Bot faollashtirilmagan: Telegramda @contactmejq_bot ga kirib /start tugmasini bosing.",
-        },
-        { status: 500 }
-      );
-    }
+    const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_CHAT_ID;
 
     const text = [
       "📩 *Portfolio saytidan yangi xabar!*",
